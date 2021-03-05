@@ -14,21 +14,31 @@ public class j_2577 {
 		int d1 = d;
 		int e;
 		int n = 0;
-		System.out.println(d);
+
 		while(d1 > 0) {
 			n++;
 			e = d1 % 10;
 			d1 /= 10;
 		}
 		int[] array = new int[n];
+		int[] checkarray = new int[10];
 		
 		for(int i = n-1; i >= 0; i--) {
 			array[i] = d % 10;
 			d /= 10;
 		}
-		for(int i = 0; i < n; i++)
-			System.out.println(array[i]);
+		for(int i = 0; i < 9; i++)
+			checkarray[i+1] = i+1;
 		
+		for(int i = 0; i < 10; i++) {
+			int count = 0;
+			for(int j = 0; j < n; j++) {
+				if(array[j] == checkarray[i])
+					count++;
+			}
+			bw.write(String.valueOf(count) + "\n");
+		}
+		bw.close();
 	}
 }
 
